@@ -64,13 +64,13 @@ exports.readUserByName = async (req, res, next) => {
                 userData: readUser
             })
         }
-        return res.json({
+        return res.status(404).json({
             status: 'Failed',
             message: 'User does  not exits in Database'
         })
 
     } catch (error) {
-        return res.status(404).json({
+        res.status(404).json({
             status: ' error occured',
             message: error.message
         })
