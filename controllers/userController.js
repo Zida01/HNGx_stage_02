@@ -56,11 +56,18 @@ exports.readUser = async (req, res, next) => {
 exports.readUserByName = async (req, res, next) => {
 
     try {
+
         const readUser = await User.findOne({ name: req.params.id })
-        res.status(200).json({
-            status: 'success',
-            userData: readUser
-        })
+        if (readUser) {
+            res.status(200).json({
+                status: 'success',
+                userData: readUser
+            })
+            return res.json({
+                status: 'Failed',
+                message: 'User does  not exits in Database'
+            })
+        }
 
     } catch (error) {
         return res.status(404).json({
