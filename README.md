@@ -34,7 +34,7 @@ npm install --save-dev nodemon
 
 ## API Reference
 
-#### GET ALL PERSON
+<!-- #### GET ALL PERSON
 
 ```http
   GET /api/all
@@ -42,12 +42,12 @@ npm install --save-dev nodemon
 
 | Parameter | Type     | Description |
 | :-------- | :------- | :---------- |
-| ` all`    | `string` |             |
+| ` all`    | `string` |             | -->
 
 #### GET PERSON
 
 ```http
-  GET /api/name
+  GET /api/user_id
 ```
 
 | Parameter | Type     | Description        |
@@ -71,7 +71,7 @@ return the name and age in **JSON** format
 ### UPDATE PERSON
 
 ```http
-  PUT /api/name
+  PUT /api/user_id
 ```
 
 | Parameter | Type     | Description        |
@@ -85,7 +85,7 @@ returns the updated name and age data in **JSON** format#
 ### DELETE PERSON
 
 ```http
-  DELETE /api/name
+  DELETE /api/user_id
 ```
 
 | Parameter | Type     | Description        |
@@ -95,3 +95,5 @@ returns the updated name and age data in **JSON** format#
 #### Response
 
 returns JSON reponse `user $(name)  has been deleted`
+
+**user_id is the name of the person**
