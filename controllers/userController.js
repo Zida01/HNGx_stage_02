@@ -7,8 +7,8 @@ exports.createUser = async (req, res, next) => {
     try {
         const newUser = await User.create(req.body);
         return res.status(200).json({
-            status: 'success',
-            message: 'user created successfully'
+            message: 'user created successfully',
+            newUser: newUser
         })
 
     } catch (error) {
@@ -53,6 +53,7 @@ exports.readUser = async (req, res, next) => {
  * FIND ALL USER BY NAME
  */
 
+
 exports.readUserByName = async (req, res, next) => {
 
     try {
@@ -94,7 +95,7 @@ exports.updateUser = async (req, res, next) => {
             },
             { new: true })
         return res.status(200).json({
-            status: 'success',
+            status: 'updated successfully',
             userData: readUser
         })
 
@@ -113,13 +114,14 @@ exports.updateUser = async (req, res, next) => {
 exports.deleteUser = async (req, res, next) => {
     try {
         const name = req.params.id;
+
         const userExits = await User.findOne({ name: req.params.id })
         if (userExits) {
 
             const readUser = await User.findOneAndDelete({ name: req.params.id })
             return res.status(200).json({
-                status: 'success',
-                message: `user ${name} deleted successfully`
+                status: 'deleted successfully',
+                message: `user ${name} is deleted successfully`
                 // 'delete user successfully'
             })
         }
