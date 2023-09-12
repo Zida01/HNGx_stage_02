@@ -6,7 +6,7 @@ const User = require('../models/userModel')
 exports.createUser = async (req, res, next) => {
     try {
         const newUser = await User.create(req.body);
-        res.status(200).json({
+        return res.status(200).json({
             status: 'success',
             message: 'user created successfully'
         })
@@ -59,7 +59,7 @@ exports.readUserByName = async (req, res, next) => {
 
         const readUser = await User.findOne({ name: req.params.id })
         if (readUser) {
-            res.status(200).json({
+            return res.status(200).json({
                 status: 'success',
                 userData: readUser
             })
@@ -68,9 +68,10 @@ exports.readUserByName = async (req, res, next) => {
             status: 'Failed',
             message: 'User does  not exits in Database'
         })
+        next()
 
     } catch (error) {
-        res.status(404).json({
+        return res.status(404).json({
             status: ' error occured',
             message: error.message
         })
@@ -92,7 +93,7 @@ exports.updateUser = async (req, res, next) => {
                 age: req.body.age
             },
             { new: true })
-        res.status(200).json({
+        return res.status(200).json({
             status: 'success',
             userData: readUser
         })
@@ -116,7 +117,7 @@ exports.deleteUser = async (req, res, next) => {
         if (userExits) {
 
             const readUser = await User.findOneAndDelete({ name: req.params.id })
-            res.status(200).json({
+            return res.status(200).json({
                 status: 'success',
                 message: `user ${name} deleted successfully`
                 // 'delete user successfully'
