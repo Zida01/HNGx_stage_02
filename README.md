@@ -47,7 +47,7 @@ npm install --save-dev nodemon
 #### GET PERSON
 
 ```http
-  GET /api/user_id
+  GET /api/name
 ```
 
 | Parameter | Type     | Description        |
@@ -71,7 +71,7 @@ return the name and age in **JSON** format
 ### UPDATE PERSON
 
 ```http
-  PUT /api/user_id
+  PUT /api/name
 ```
 
 | Parameter | Type     | Description        |
@@ -85,7 +85,7 @@ returns the updated name and age data in **JSON** format#
 ### DELETE PERSON
 
 ```http
-  DELETE /api/user_id
+  DELETE /api/name
 ```
 
 | Parameter | Type     | Description        |
